@@ -24,14 +24,34 @@ bkg <- nord_palettes$polarnight[2]
     alpha = .5, type = 'curve'
   ) -> plot)
 
-  export_image(plot,
+(use_seed(42) %>%
+  entity_gaussian(grain = 100) %>%
+  unfold_breeze(iterations = 10) %>%
+  style_walk(
+    background = bkg,
+    palette = palette_manual(nord_palettes$aurora),
+    alpha = .5
+  ) -> plot_2)
+
+(use_seed(69) %>%
+  entity_gaussian(grain = 10000) %>%
+  unfold_warp(iterations = 10) %>%
+  style_ribbon(
+    background = bkg,
+    palette = palette_manual(nord_palettes$aurora),
+    alpha = .5
+  ) -> plot_2)
+
+
+
+  export_image(plot_2,
     filename = here::here('img', 'web.png'),
     dpi = 600,
     width = 16,
     height = 9
   )
-
-use_seed(42) %>%
-  entity_gaussian(grain = 10000) %>% 
-  unfold_warp(scatter = F) %>% 
-  style_ribbon(background = "white", palette = palette_manual(nord_palettes$halifax_harbor))
+# 
+# use_seed(42) %>%
+#   entity_gaussian(grain = 10000) %>% 
+#   unfold_warp(scatter = F) %>% 
+#   style_ribbon(background = "white", palette = palette_manual(nord_palettes$halifax_harbor))
