@@ -10,11 +10,10 @@ tree_params <-
     seed = 69,
     time = 12,
     img_background = nord::nord_palettes$mountain_forms[4],
-    # img_palette = "harrypotter::gryffindor",
-    # img_palette = "grDevices::Turku",
-    img_palette = "pals::kovesi.isoluminant_cgo_70_c39",
+    # img_background = "#330036",
+    img_palette = "harrypotter::gryffindor",
+    # img_palette = "gameofthrones::baratheon",
     scale = seq(0.8, 1, by = 0.01),
-    # scale = 1,
     angle = c(-15, -10, 0, 10, 15, 20)
     )
 
@@ -28,8 +27,8 @@ img <- flametree_plot(tree = dat,
                       palette = tree_params$img_palette)
 
 
-plot(img)
+# plot(img)
 
-# flametree_save(plot = img,
-#                filename = "gryfy.png",
-#                pixels = 10000)
+flametree_save(plot = img,
+               filename = "gryfy.jpg",
+               pixels = 8000)
